@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 12 55.6% 96.5%;
+    --foreground: 111 13.7% 20%;
+    --card: 12 55.6% 96.5%;
+    --card-foreground: 111 13.7% 20%;
+    --popover: 12 55.6% 96.5%;
+    --popover-foreground: 111 13.7% 20%;
+    --primary: 111 13.7% 20%;
+    --primary-foreground: 12 55.6% 96.5%;
+    --secondary: 130 9.2% 74.5%;
+    --secondary-foreground: 111 13.7% 20%;
+    --muted: 130 9.2% 90%;
+    --muted-foreground: 111 10% 38%;
+    --accent: 13 33.3% 56.5%;
+    --accent-foreground: 12 55.6% 96.5%;
+    --highlight: 100 26.7% 56.7%;
+    --highlight-foreground: 111 13.7% 20%;
+    --destructive: 13 33.3% 56.5%;
+    --destructive-foreground: 12 55.6% 96.5%;
+    --border: 130 9.2% 74.5%;
+    --input: 130 9.2% 80%;
+    --ring: 13 33.3% 56.5%;
+    --radius: 0.25rem;
+    --font-heading: "Fraunces", ui-serif, Georgia, serif;
+    --font-body: "General Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-display: "Fraunces", ui-serif, Georgia, serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-color: #FBF3F1;
+  }
+
+  ::selection {
+    background-color: #B57B6B;
+    color: #FBF3F1;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-heading;
+    font-feature-settings: "ss01";
+  }
+}
+
+@layer components {
+  .input-field {
+    @apply w-full bg-transparent border-b border-evergreen/25 px-1 py-3 text-base text-evergreen placeholder:text-evergreen/35;
+    transition: border-color 0.3s ease;
+  }
+  .input-field:focus {
+    outline: none;
+    border-color: #B57B6B;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .paper-grain {
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(46, 58, 44, 0.025) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(181, 123, 107, 0.03) 0%, transparent 40%);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .breathing {
+    animation: breathing 3s ease-in-out infinite;
+  }
+  @keyframes breathing {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(181, 123, 107, 0.45), 0 0 0 0 rgba(181, 123, 107, 0.25); }
+    50% { box-shadow: 0 0 0 22px rgba(181, 123, 107, 0), 0 0 0 44px rgba(181, 123, 107, 0); }
+  }
+
+  .pulse-ring {
+    animation: pulseRing 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  @keyframes pulseRing {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    70% { transform: scale(1.6); opacity: 0; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  .marquee-line {
+    animation: marquee 28s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
